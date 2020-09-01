@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music Player</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" integrity="sha512-PgQMlq+nqFLV4ylk1gwUOgm6CtIIXkKwaIHp/PAIWHzig/lKZSEGKEysh0TCVbHJXCLN7WetD8TFecIky75ZfQ==" crossorigin="anonymous" />
+</head>
+<body>
+    <div class="main_div">
+        <div class="music_container">
+            <h2 id="title">Tera Fitoor</h2>
+            <h3 id="artist">Arjit Singh</h3>
+        <div class="img_container">
+            <img src="img/music1.jpg" height= 200 width=200 alt="">
+        </div>
+        <audio src="music/music1.mp3"></audio>
+
+        <!-- controls -->
+            <div class="music_controls">
+                <i class="fas fa-backward" id="prev" title="Previous"></i>
+                <i class="fas fa-play main-button" id="play" title="Play"></i>
+                <i class="fas fa-forward" id="next" title="Next"></i>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const music = document.querySelector("audio");
+        const img = document.querySelector("img")
+        const play = document.getElementById("play");
+        const title = document.getElementById("title");
+        const artist = document.getElementById("artist");
+        const prev = document.getElementById("prev");
+        const next = document.getElementById("next");
+
+        const songs = [
+            {
+            name : "music1",
+            img : "music1",
+            title: "Tera Fitoor",
+            artist: "Arjit Singh",
+            },
+            {
+            name : "music2",
+            img : "music2",
+            title: "Konkan Nakwa",
+            artist: "Shubhangi Kedar",
+            },
+            {
+            name : "music3",
+            img : "music3",
+            title: "Yeti Yeti",
+            artist: "Chinmayi Sripada",
+            }
+        ];
+
+
+
+        let isPlaying = false;
+        const playMusic = () => {
+            music.play();
+            isPlaying = true;
+            play.classList.replace('fa-play','fa-pause');
+            img.classList.add("anime");
+        };
+
+        const pauseMusic = () => {
+            music.pause();
+            isPlaying = false;
+            play.classList.replace('fa-pause','fa-play');
+            img.classList.remove("anime");
+        };
+
+        play.addEventListener('click', () => {
+            isPlaying ? pauseMusic(): playMusic();
+        });
+
+        loadSong = (songs) =>{
+            title.textContent = songs.title;
+            artist.textContent = songs.artist;
+            music.src = "music/" + songs.name+".mp3";
+            img.src = "img/" + songs.img+".jpg";
+        };
+
+        songIndex = 0;
+        const prevSong = () => {
+            songIndex = (songIndex - 1 + songs.length) % songs.length;
+            loadSong(songs[songIndex]);
+            playMusic();
+        };
+
+        const nextSong = () => {
+            songIndex = (songIndex + 1) % songs.length;
+            loadSong(songs[songIndex]);
+            playMusic();
+        };
+
+        next.addEventListener("click", nextSong);
+        prev.addEventListener("click", prevSong);
+    </script>
+
+
+
+    
+</body>
+</html>
