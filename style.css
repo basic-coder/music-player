@@ -29,6 +29,9 @@ html{
     box-shadow: 0 1.2rem 3rem 0.5rem rgba(0, 0, 0, 0.2);
     padding: 3rem;
     text-align: center;
+    cursor: pointer;
+    transform-style: preserve-3d;
+    transform: perspective(1000px);
 }
 
 .music_container #title{
@@ -63,6 +66,7 @@ img {
     border-radius: 50%;
     object-fit: cover;
     box-shadow: 0 1.2rem 3rem 0.5 rgba(0, 0, 0, 0.4);
+    transform: translateZ(20px)
 }
 
 .music_controls {
