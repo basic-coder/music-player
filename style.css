@@ -20,7 +20,9 @@ html{
     display: grid;
     place-items: center;
 }
-
+h2{
+    transform: translateZ(20px);
+}
 .music_container{
     width: 35rem;
     height: 55rem;
@@ -66,7 +68,7 @@ img {
     border-radius: 50%;
     object-fit: cover;
     box-shadow: 0 1.2rem 3rem 0.5 rgba(0, 0, 0, 0.4);
-    transform: translateZ(20px)
+    transform: translateZ(20px);
 }
 
 .music_controls {
@@ -76,6 +78,7 @@ img {
     justify-content: space-between;
     margin: auto;
     margin-top: 2.5rem;
+    transform: translateZ(50px);
 }
 
 .music_controls .fas {
